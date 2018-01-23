@@ -18,6 +18,13 @@ if args["TLS"] and not all(os.path.exists(file_path) for file_path in args["TLS"
     print("Missing cert or key file, disabling TLS")
     args["TLS_ERROR"] = "yes"
 
+if "HOST_WEBMAIL" not in args:
+    args["HOST_WEBMAIL"] = "webmail"
+if "HOST_ADMIN" not in args:
+    args["HOST_ADMIN"] = "admin"
+if "HOST_WEBDAV" not in args:
+    args["HOST_WEBDAV"] = "webdav"
+
 
 convert("/conf/tls.conf", "/etc/nginx/tls.conf", args)
 convert("/conf/nginx.conf", "/etc/nginx/nginx.conf", args)
